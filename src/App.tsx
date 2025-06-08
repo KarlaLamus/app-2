@@ -35,9 +35,9 @@ function App() {
           <button
             className="nav-link"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
           >
-            {theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
-          </button>
+            {theme === 'dark' ? '🌞' : '🌙'}          </button>
         </nav>
       </header>
 

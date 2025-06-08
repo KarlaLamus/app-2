@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './EnvioSection.css'; // reutilizamos el CSS
 
 function EnvioSection() {
   const [file, setFile] = useState<File | null>(null);
   const [sending, setSending] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -26,6 +27,9 @@ function EnvioSection() {
       setSending(false);
       setShowSuccess(true);
       setFile(null);
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
       setTimeout(() => setShowSuccess(false), 7000);
     }, 3000);
   };
@@ -43,6 +47,7 @@ function EnvioSection() {
           id="fileUploadEnvio"
           accept=".zip"
           onChange={handleFileChange}
+          ref={inputRef}
           style={{ display: 'none' }}
         />
         <label htmlFor="fileUploadEnvio" className="file-upload-btn">
