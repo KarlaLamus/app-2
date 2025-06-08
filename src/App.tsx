@@ -18,7 +18,7 @@ function App() {
     <div className="app-container">
       <header className="header">
         <div className="logo">
-          <img src="/logo.svg" alt="Orla Magna" />
+          <img src="/logo_orla_magna_v3.svg" alt="Orla Magna" />
         </div>
         <nav className="nav">
           <button
