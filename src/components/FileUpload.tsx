@@ -4,7 +4,7 @@ interface FileUploadProps {
   file: File | null;
   onFileChange: (file: File | null) => void;
   inputId: string;
-  inputRef?: React.RefObject<HTMLInputElement>;
+  inputRef?: React.RefObject<HTMLInputElement | null>;
 }
 
 function FileUpload({ file, onFileChange, inputId, inputRef }: FileUploadProps) {
