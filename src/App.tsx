@@ -32,12 +32,15 @@ function App() {
           >
             Envío
           </button>
-          <button
-            className="nav-link"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
-          >
-            {theme === 'dark' ? '🌞' : '🌙'}          </button>
+          <label className="theme-switch">
+            <input
+              type="checkbox"
+              checked={theme === 'dark'}
+              onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            />
+            <span className="slider" />
+          </label>
+
         </nav>
       </header>
 
