@@ -12,6 +12,8 @@
   --button-text-color: #000000;
   --button-disabled-bg: rgba(255, 255, 255, 0.2);
   --button-disabled-text-color: #aaaaaa;
+  --success-bg-color: #4caf50;
+  --success-text-color: #ffffff;
 }
 
 body.light {
