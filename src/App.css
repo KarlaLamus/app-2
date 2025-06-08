@@ -1,0 +1,96 @@
+:root {
+  --primary-color: #f7b500;
+  --secondary-color: #000000;
+  --text-color: #fff;
+  --accent-color: #e63946;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.header {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav .nav-link {
+  background: transparent;
+  border: none;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav .nav-link.active,
+.nav .nav-link:hover {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.main-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.footer {
+  background-color: var(--primary-color);
+  text-align: center;
+  padding: 0;
+  color: var(--secondary-color);
+}
+
+
+.editor-section, .envio-section {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
