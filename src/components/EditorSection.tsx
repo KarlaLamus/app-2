@@ -1,60 +1,42 @@
 import { useState } from 'react';
+import FileUpload from './FileUpload';
 import './EditorSection.css';
 
 function EditorSection() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    if (e.dataTransfer.files.length > 0) {
-      setFile(e.dataTransfer.files[0]);
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
-    }
-  };
+  const [error, setError] = useState('');
 
   const handleUpload = () => {
     if (!file) return;
     setLoading(true);
-    setTimeout(() => {
+    setError('');
+
+    try {
+      // Simulate async operation
+      setTimeout(() => {
+        setLoading(false);
+        setShowSuccess(true);
+        const blob = new Blob(['Contenido ficticio ZIP'], { type: 'application/zip' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'resultado.zip';
+        a.click();
+        URL.revokeObjectURL(url);
+        setTimeout(() => setShowSuccess(false), 7000);
+      }, 3000);
+    } catch (err) {
       setLoading(false);
-      setShowSuccess(true);
-      const blob = new Blob(['Contenido ficticio ZIP'], { type: 'application/zip' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'resultado.zip';
-      a.click();
-      URL.revokeObjectURL(url);
-      setTimeout(() => setShowSuccess(false), 7000);
-    }, 3000);
+      setError('Ocurrió un error al procesar el archivo');
+    }
   };
 
   return (
     <div className="editor-section">
-      <div
-        className="drop-zone"
-        onDrop={handleDrop}
-        onDragOver={(e) => e.preventDefault()}
-      >
-        <p>{file ? file.name : 'Arrastra aquí un archivo .zip'}</p>
-        <input
-          type="file"
-          id="fileUploadEditor"
-          accept=".zip"
-          onChange={handleFileChange}
-          style={{ display: 'none' }}
-        />
-        <label htmlFor="fileUploadEditor" className="file-upload-btn">
-          Buscar archivo
-        </label>
-      </div>
+      <h2 className="section-title">Estás en la sección de edición</h2>
+      <FileUpload file={file} onFileChange={setFile} inputId="fileUploadEditor" />
 
       <button
         className="edit-btn"
@@ -70,6 +52,7 @@ function EditorSection() {
             'Editar'
         )}
         </button>
+      {error && <div className="error-message">{error}</div>}
       {showSuccess && (
         <div className="success-message">
           ✅ Las imágenes se han editado exitosamente

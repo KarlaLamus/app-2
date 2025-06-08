@@ -1,59 +1,42 @@
 import { useState, useRef } from 'react';
+import FileUpload from './FileUpload';
 import './EnvioSection.css'; // reutilizamos el CSS
 
 function EnvioSection() {
   const [file, setFile] = useState<File | null>(null);
   const [sending, setSending] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState('');
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    if (e.dataTransfer.files.length > 0) {
-      setFile(e.dataTransfer.files[0]);
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
-    }
+  const handleFileChange = (file: File | null) => {
+    setFile(file);
   };
 
   const handleSend = () => {
     if (!file) return;
     setSending(true);
-    setTimeout(() => {
+    setError('');
+    try {
+      setTimeout(() => {
+        setSending(false);
+        setShowSuccess(true);
+        setFile(null);
+        if (inputRef.current) {
+          inputRef.current.value = '';
+        }
+        setTimeout(() => setShowSuccess(false), 7000);
+      }, 3000);
+    } catch (err) {
       setSending(false);
-      setShowSuccess(true);
-      setFile(null);
-      if (inputRef.current) {
-        inputRef.current.value = '';
-      }
-      setTimeout(() => setShowSuccess(false), 7000);
-    }, 3000);
+      setError('Ocurrió un error al enviar el archivo');
+    }
   };
 
   return (
     <div className="editor-section">
-      <div
-        className="drop-zone"
-        onDrop={handleDrop}
-        onDragOver={(e) => e.preventDefault()}
-      >
-        <p>{file ? file.name : 'Arrastra aquí un archivo .zip'}</p>
-        <input
-          type="file"
-          id="fileUploadEnvio"
-          accept=".zip"
-          onChange={handleFileChange}
-          ref={inputRef}
-          style={{ display: 'none' }}
-        />
-        <label htmlFor="fileUploadEnvio" className="file-upload-btn">
-          Buscar archivo
-        </label>
-      </div>
+      <h2 className="section-title">Estás en la sección de envío</h2>
+      <FileUpload file={file} onFileChange={handleFileChange} inputId="fileUploadEnvio" inputRef={inputRef} />
 
       <button
         className="edit-btn"
@@ -69,6 +52,7 @@ function EnvioSection() {
           'Enviar'
         )}
       </button>
+      {error && <div className="error-message">{error}</div>}
       {showSuccess && (
         <div className="success-message">
           ✅ Archivo enviado correctamente

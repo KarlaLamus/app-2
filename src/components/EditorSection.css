@@ -5,6 +5,16 @@
   position: relative;
 }
 
+.section-title {
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
 .drop-zone {
   border: 2px dashed var(--primary-color);
   border-radius: 10px;
