@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './EditorSection.css'; // reutilizamos el CSS
+import './EnvioSection.css'; // reutilizamos el CSS
 
 function EnvioSection() {
   const [file, setFile] = useState<File | null>(null);

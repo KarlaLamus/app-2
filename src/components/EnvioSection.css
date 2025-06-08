@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
+
 
 .drop-zone {
   border: 2px dashed var(--primary-color);
@@ -87,7 +89,7 @@
 }
 
 .success-message {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);

@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import EditorSection from './components/EditorSection';
 import EnvioSection from './components/EnvioSection';
 import './App.css';
 
 function App() {
   const [activeSection, setActiveSection] = useState<'editor' | 'envio'>('editor');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+
+  useEffect(() => {
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+  }, [theme]);
 
   return (
     
@@ -25,6 +31,12 @@ function App() {
             onClick={() => setActiveSection('envio')}
           >
             Envío
+          </button>
+          <button
+            className="nav-link"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          >
+            {theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
           </button>
         </nav>
       </header>
