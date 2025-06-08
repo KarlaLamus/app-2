@@ -89,6 +89,10 @@ body, html {
   transition: color 0.3s;
 }
 
+.nav .theme-switch {
+  margin-left: 1rem;
+}
+
 .nav .nav-link.active,
 .nav .nav-link:hover {
   color: var(--accent-color);
