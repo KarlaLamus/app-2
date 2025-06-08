@@ -100,8 +100,8 @@
 
 .success-message {
   margin-top: 1rem;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: var(--success-bg-color);
+  color: var(--success-text-color);
   padding: 1rem 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
