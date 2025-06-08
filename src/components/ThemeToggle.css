@@ -19,6 +19,7 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
+  border: 1px solid #999;
   transition: 0.4s;
   border-radius: 34px;
 }
@@ -36,7 +37,8 @@
 }
 
 .theme-switch input:checked + .slider {
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 .theme-switch input:checked + .slider:before {
