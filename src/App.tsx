@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import EditorSection from './components/EditorSection';
 import EnvioSection from './components/EnvioSection';
 import './App.css';
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   const [activeSection, setActiveSection] = useState<'editor' | 'envio'>('editor');
@@ -32,12 +33,10 @@ function App() {
           >
             Envío
           </button>
-          <button
-            className="nav-link"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
-          >
-            {theme === 'dark' ? '🌞' : '🌙'}          </button>
+          <ThemeToggle
+            theme={theme}
+            toggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          />
         </nav>
       </header>
 
