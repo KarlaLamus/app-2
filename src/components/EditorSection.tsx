@@ -4,6 +4,7 @@ import './EditorSection.css';
 function EditorSection() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ function EditorSection() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      setShowSuccess(true);
       const blob = new Blob(['Contenido ficticio ZIP'], { type: 'application/zip' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -30,6 +32,7 @@ function EditorSection() {
       a.download = 'resultado.zip';
       a.click();
       URL.revokeObjectURL(url);
+      setTimeout(() => setShowSuccess(false), 7000);
     }, 3000);
   };
 
@@ -67,6 +70,11 @@ function EditorSection() {
             'Editar'
         )}
         </button>
+      {showSuccess && (
+        <div className="success-message">
+          ✅ Las imágenes se han editado exitosamente
+        </div>
+      )}
 
     </div>
   );
