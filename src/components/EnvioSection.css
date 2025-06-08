@@ -11,7 +11,7 @@
   border-radius: 10px;
   padding: 2rem;
   text-align: center;
-  color: #ccc;
+  color: var(--dropzone-text-color);
   transition: background-color 0.3s, border-color 0.3s;
   max-width: 600px;
   width: 100%;
@@ -27,7 +27,7 @@
 }
 
 .drop-zone:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--dropzone-hover-bg);
   cursor: pointer;
 }
 
@@ -35,7 +35,7 @@
   display: inline-block;
   margin-top: 1rem;
   background-color: var(--primary-color);
-  color: var(--secondary-color);
+  color: var(--button-text-color);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
@@ -50,7 +50,7 @@
 .edit-btn {
   margin-top: 1rem;
   background-color: var(--primary-color);
-  color: var(--secondary-color);
+  color: var(--button-text-color);
   border: none;
   padding: 0.6rem 1.5rem;
   border-radius: 4px;
@@ -61,8 +61,8 @@
 }
 
 .edit-btn:disabled {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #aaa;
+  background-color: var(--button-disabled-bg);
+  color: var(--button-disabled-text-color);
   cursor: not-allowed;
 }
 
@@ -89,18 +89,14 @@
 }
 
 .success-message {
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: yellow !important;
-  color: black !important;
+  margin-top: 1rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   padding: 1rem 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   font-size: 1rem;
   font-weight: bold;
-  z-index: 1000;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -109,8 +105,8 @@
 }
 
 @keyframes fadeInOut {
-  0% { opacity: 0; transform: translate(-50%, -20px); }
-  10% { opacity: 1; transform: translate(-50%, 0); }
-  90% { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, -20px); }
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
 }

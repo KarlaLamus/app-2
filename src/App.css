@@ -3,16 +3,44 @@
   --secondary-color: #000000;
   --text-color: #fff;
   --accent-color: #e63946;
+  --nav-text-color: #000000;
+  --title-color: #ffffff;
+  --subtitle-color: #cccccc;
+  --footer-text-color: #000000;
+  --dropzone-text-color: #ccc;
+  --dropzone-hover-bg: rgba(255, 255, 255, 0.05);
+  --button-text-color: #000000;
+  --button-disabled-bg: rgba(255, 255, 255, 0.2);
+  --button-disabled-text-color: #aaaaaa;
 }
 
 body.light {
   --secondary-color: #ffffff;
   --text-color: #000000;
+  --nav-text-color: #000000;
+  --title-color: #000000;
+  --subtitle-color: #555555;
+  --footer-text-color: #000000;
+  --dropzone-text-color: #666666;
+  --dropzone-hover-bg: rgba(0, 0, 0, 0.05);
+  --button-text-color: #000000;
+  --button-disabled-bg: rgba(0, 0, 0, 0.1);
+  --button-disabled-text-color: #777777;
 }
+
 
 body.dark {
   --secondary-color: #000000;
   --text-color: #ffffff;
+  --nav-text-color: #000000;
+  --title-color: #ffffff;
+  --subtitle-color: #cccccc;
+  --footer-text-color: #000000;
+  --dropzone-text-color: #ccc;
+  --dropzone-hover-bg: rgba(255, 255, 255, 0.05);
+  --button-text-color: #000000;
+  --button-disabled-bg: rgba(255, 255, 255, 0.2);
+  --button-disabled-text-color: #aaaaaa;
 }
 
 html, body, #root {
@@ -54,7 +82,7 @@ body, html {
 .nav .nav-link {
   background: transparent;
   border: none;
-  color: var(--secondary-color);
+  color: var(--nav-text-color);
   font-size: 1rem;
   margin-left: 1rem;
   cursor: pointer;
@@ -80,20 +108,21 @@ body, html {
 .title {
   font-size: 3rem;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: var(--title-color);
+
 }
 
 .subtitle {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: #ccc;
+  color: var(--subtitle-color);
 }
 
 .footer {
   background-color: var(--primary-color);
   text-align: center;
   padding: 0;
-  color: var(--secondary-color);
+  color: var(--footer-text-color);
 }
 
 
